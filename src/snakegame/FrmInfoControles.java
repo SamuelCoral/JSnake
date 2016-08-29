@@ -48,15 +48,15 @@ public class FrmInfoControles extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblControles = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        pnlControlesJugadores = new javax.swing.JScrollPane();
+        tblControlesJugadores = new javax.swing.JTable();
+        lblControlesJugadores = new javax.swing.JLabel();
+        lblNota = new javax.swing.JLabel();
+        lblNota2 = new javax.swing.JLabel();
+        lblPausa = new javax.swing.JLabel();
+        lblTeclaPausa = new javax.swing.JLabel();
+        lblTerminarPartida = new javax.swing.JLabel();
+        lblTeclaTerminarPartida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Información de los controles");
@@ -67,7 +67,7 @@ public class FrmInfoControles extends javax.swing.JFrame {
             }
         });
 
-        tblControles.setModel(new javax.swing.table.DefaultTableModel(
+        tblControlesJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Jugador 1", "W", "A", "S", "D"},
                 {"Jugador 2", "Arriba", "Izquierda", "Abajo", "Derecha"},
@@ -78,26 +78,26 @@ public class FrmInfoControles extends javax.swing.JFrame {
                 "", "Arriba", "Izquierda", "Abajo", "Derecha"
             }
         ));
-        jScrollPane1.setViewportView(tblControles);
+        pnlControlesJugadores.setViewportView(tblControlesJugadores);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Mover las viboritas");
+        lblControlesJugadores.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblControlesJugadores.setText("Mover las viboritas");
 
-        jLabel2.setText("NOTA: Cuadro de diálogo informativo solamente.");
+        lblNota.setText("NOTA: Cuadro de diálogo informativo solamente.");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Pausar el juego");
+        lblNota2.setText("Aún no se pueden configurar los controles :(");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Terminar la partida");
+        lblPausa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPausa.setText("Pausar el juego");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel5.setText("Tecla escape");
+        lblTeclaPausa.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        lblTeclaPausa.setText("Barra espaciadora");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel6.setText("Barra espaciadora");
+        lblTerminarPartida.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTerminarPartida.setText("Terminar la partida");
 
-        jLabel7.setText("Aún no se pueden configurar los controles :(");
+        lblTeclaTerminarPartida.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        lblTeclaTerminarPartida.setText("Tecla escape");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,39 +106,39 @@ public class FrmInfoControles extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(lblControlesJugadores)
+                    .addComponent(lblNota)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(lblTerminarPartida)
+                            .addComponent(lblPausa))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)))
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTeclaPausa)
+                            .addComponent(lblTeclaTerminarPartida)))
+                    .addComponent(lblNota2)
+                    .addComponent(pnlControlesJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblNota)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(lblNota2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblControlesJugadores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                .addComponent(pnlControlesJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(lblPausa)
+                    .addComponent(lblTeclaPausa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTerminarPartida)
+                    .addComponent(lblTeclaTerminarPartida))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -150,14 +150,14 @@ public class FrmInfoControles extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblControles;
+    private javax.swing.JLabel lblControlesJugadores;
+    private javax.swing.JLabel lblNota;
+    private javax.swing.JLabel lblNota2;
+    private javax.swing.JLabel lblPausa;
+    private javax.swing.JLabel lblTeclaPausa;
+    private javax.swing.JLabel lblTeclaTerminarPartida;
+    private javax.swing.JLabel lblTerminarPartida;
+    private javax.swing.JScrollPane pnlControlesJugadores;
+    private javax.swing.JTable tblControlesJugadores;
     // End of variables declaration//GEN-END:variables
 }

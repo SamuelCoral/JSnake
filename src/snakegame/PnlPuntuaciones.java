@@ -39,7 +39,7 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblPuntuaciones = new javax.swing.JLabel();
         lblPuntuacion1 = new javax.swing.JLabel();
         lblPuntuacion2 = new javax.swing.JLabel();
         lblPuntuacion3 = new javax.swing.JLabel();
@@ -47,8 +47,8 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(260, 600));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Puntuaciones");
+        lblPuntuaciones.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPuntuaciones.setText("Puntuaciones");
 
         lblPuntuacion1.setText("Jugador 1");
 
@@ -65,7 +65,7 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblPuntuaciones)
                     .addComponent(lblPuntuacion1)
                     .addComponent(lblPuntuacion2)
                     .addComponent(lblPuntuacion3)
@@ -76,7 +76,7 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblPuntuaciones)
                 .addGap(18, 18, 18)
                 .addComponent(lblPuntuacion1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -91,10 +91,10 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel lblPuntuacion1;
     public javax.swing.JLabel lblPuntuacion2;
     public javax.swing.JLabel lblPuntuacion3;
     public javax.swing.JLabel lblPuntuacion4;
+    private javax.swing.JLabel lblPuntuaciones;
     // End of variables declaration//GEN-END:variables
 }
