@@ -59,6 +59,23 @@ public class AreaJuego extends JPanel implements KeyListener {
     private JLabel lblPausa;
     public boolean juegoPausado;
     
+    /**
+     * 
+     * Crea un panel en el que se desarrolla una partida del Snake e incializa el temporizador
+     * y los elemntos del juego de acuerdo a los parámetros especificados.
+     * @param juegoOrigen Formulario donde se agregará el juego, debe contener las etiquetas de las puntuaciones.
+     * @param tamCuadros Tamaño de los cuadros (en pixeles).
+     * @param tamCampo Tamaño del campo de juego (en cuadros).
+     * @param numJugadores Número de jugadores que habrá en la partida (de 1 a 4).
+     * @param teclas Teclas direccionales de cada jugador.
+     * @param colores Colores de las viboritas.
+     * @param numComiditas Número de comiditas simultaneas en el campo de juego.
+     * @param longitudInicial Longitud inicial de las viboritas.
+     * @param colorFondo Color de fondo del campo de juego.
+     * @param colorComidita Color de las comiditas.
+     * @param reproducirSoniditos Indica si se desean reproducir los sonidos del juego.
+     * @param dificultad ms a esperar entre cada paso del juego.
+     */
     public AreaJuego(
         FrmJuego juegoOrigen,
         Dimension tamCuadros,
@@ -282,10 +299,12 @@ public class AreaJuego extends JPanel implements KeyListener {
     /**
      * 
      * Avanza un fotograma o un paso en el juego, Esto incluye:
-     * - Avanzar todos los jugadores un paso a la dirección a la que apunta.
-     * - Verificar si las viboritas chocan entre ellas, con sigo mismas o contra algún muro.
-     * - Verificar si alguna viborita recogió una comidita, si lo hizo aumentar su longitud,
-     *    incrementar su puntuación y reacomodar la comidita.
+     * <ul>
+     * <li>Avanzar todos los jugadores un paso a la dirección a la que apunta.</li>
+     * <li>Verificar si las viboritas chocan entre ellas, con sigo mismas o contra algún muro.</li>
+     * <li>Verificar si alguna viborita recogió una comidita, si lo hizo aumentar su longitud,
+     *     incrementar su puntuación y reacomodar la comidita.</li>
+     * </ul>
      * 
      * Cuando todos los jugadores pierdan el juego se terminará, mostrará el jugador ganador
      * con su puntuación y mandará al formulario padre a destruir el juego.
@@ -392,12 +411,14 @@ public class AreaJuego extends JPanel implements KeyListener {
     /**
      * 
      * Manda a dibujar todos los elementos del juego en el siguiente orden:
-     * - Rellena el campo de juego con el color de fondo establecido.
-     * - Dibuja todas las viboritas con un contorno que contraste con el color de su cuerpo.
-     * - Dibuja sus ojos de acuerdo a la dirección en la que se dirigen con un color
-     *   que contraste con el de su cuerpo.
-     * - Dibuja todas las comiditas.
-     * - Dibuja la etiqueta de pausa cuando sea el caso.
+     * <ul>
+     * <li>Rellena el campo de juego con el color de fondo establecido.</li>
+     * <li>Dibuja todas las viboritas con un contorno que contraste con el color de su cuerpo.</li>
+     * <li>Dibuja sus ojos de acuerdo a la dirección en la que se dirigen con un color
+     *     que contraste con el de su cuerpo.</li>
+     * <li>Dibuja todas las comiditas.</li>
+     * <li>Dibuja la etiqueta de pausa cuando sea el caso.</li>
+     * </ul>
      * 
      * @param g Graficos a usar para dibujar.
      */

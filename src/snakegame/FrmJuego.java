@@ -146,12 +146,14 @@ public class FrmJuego extends JFrame {
     /**
      * 
      * Realiza las siguientes operaciones para empezar el juego:
-     * - Oculta el panel de configuración de nuevo juego.
-     * - Muestra el panel de puntuaciones y el menú de reinciar juego.
-     * - Agrega el panel del juego y redimensiona el panel de puntuaciones
-     *   para que sea del mismo alto que el panel del juego.
-     * - Redimensiona todo el formulario y lo centra en la pantalla
-     * - Enfoca el juego para que reaccione a los eventos del teclado.
+     * <ul>
+     * <li>Oculta el panel de configuración de nuevo juego.</li>
+     * <li>Muestra el panel de puntuaciones y el menú de reinciar juego.</li>
+     * <li>Agrega el panel del juego y redimensiona el panel de puntuaciones
+     *     para que sea del mismo alto que el panel del juego.</li>
+     * <li>Redimensiona todo el formulario y lo centra en la pantalla.</li>
+     * <li>Enfoca el juego para que reaccione a los eventos del teclado.</li>
+     * </ul>
      */
     public void empezarJuego() {
         
@@ -168,11 +170,13 @@ public class FrmJuego extends JFrame {
     /**
      * 
      * Realiza las siguientes operaciones para terminar el juego:
-     * - Esconde todas las etiquetas de puntuación de los jugadores y el panel de puntuaciones
-     * - Esconde el menú de reiniciar el juego.
-     * - Muestra el panel de configuración de nuevo juego.
-     * - Quita el panel del juego que acaba de terminar y lo destruye.
-     * - Redimensiona todo el formulario y lo centra en la pantalla.
+     * <ul>
+     * <li>Esconde todas las etiquetas de puntuación de los jugadores y el panel de puntuaciones</li>
+     * <li>Esconde el menú de reiniciar el juego.</li>
+     * <li>Muestra el panel de configuración de nuevo juego.</li>
+     * <li>Quita el panel del juego que acaba de terminar y lo destruye.</li>
+     * <li>Redimensiona todo el formulario y lo centra en la pantalla.</li>
+     * </ul>
      */
     public void terminarJuego() {
         
