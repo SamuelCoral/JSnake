@@ -45,7 +45,7 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
         lblPuntuacion3 = new javax.swing.JLabel();
         lblPuntuacion4 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(200, 600));
+        setPreferredSize(new java.awt.Dimension(260, 600));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Puntuaciones");
@@ -70,7 +70,7 @@ public class PnlPuntuaciones extends javax.swing.JPanel {
                     .addComponent(lblPuntuacion2)
                     .addComponent(lblPuntuacion3)
                     .addComponent(lblPuntuacion4))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

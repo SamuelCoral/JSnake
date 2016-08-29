@@ -345,6 +345,7 @@ public class AreaJuego extends JPanel implements KeyListener {
             if(nuevaPos.x < 0 || nuevaPos.y < 0 || nuevaPos.x >= tamCampo.width || nuevaPos.y >= tamCampo.height) {
                 
                 yaPerdio[c] = true;
+                juegoOrigen.puntuaciones[c].setText(juegoOrigen.puntuaciones[c].getText() + " (ya perdió)");
                 viboritas.get(c).clear();
                 if(reproducirSoniditos) reproducirSonidito(sonidoPerder);
                 continue;

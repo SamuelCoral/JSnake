@@ -104,12 +104,12 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
         pnlColorComiditas = new javax.swing.JPanel();
         chkSonidos = new javax.swing.JCheckBox();
         pnlDificultad = new javax.swing.JPanel();
+        numDificultad = new javax.swing.JSpinner();
         rdbMuyFacil = new javax.swing.JRadioButton();
         rdbFacil = new javax.swing.JRadioButton();
         rdbMedio = new javax.swing.JRadioButton();
         rdbDificil = new javax.swing.JRadioButton();
         rdbMuydificil = new javax.swing.JRadioButton();
-        numDificultad = new javax.swing.JSpinner();
         rdbPersonalizado = new javax.swing.JRadioButton();
 
         lblNuevoJuego.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -122,7 +122,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
             }
         });
 
-        pnlDimensionesCampo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dimensiones del campo de juego", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
+        pnlDimensionesCampo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dimensiones del campo de juego", 0, 0, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
 
         lblTamCuadros.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTamCuadros.setForeground(new java.awt.Color(102, 102, 102));
@@ -201,18 +201,18 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        pnlOpcionesJugadores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de jugadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
+        pnlOpcionesJugadores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de jugadores", 0, 0, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
 
         numJugadores.setModel(new javax.swing.SpinnerNumberModel(1, 1, 4, 1));
-        numJugadores.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                numJugadoresPropertyChange(evt);
+        numJugadores.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                numJugadoresStateChanged(evt);
             }
         });
 
         lblNumJugadores.setText("Jugadores");
 
-        tabColoresViboritas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+        tabColoresViboritas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Color", 0, 0, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
 
         javax.swing.GroupLayout pnlOpcionesJugadoresLayout = new javax.swing.GroupLayout(pnlOpcionesJugadores);
         pnlOpcionesJugadores.setLayout(pnlOpcionesJugadoresLayout);
@@ -236,11 +236,11 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                     .addComponent(numJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNumJugadores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabColoresViboritas, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tabColoresViboritas, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        pnlOpcionesJuego.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones del juego", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
+        pnlOpcionesJuego.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones del juego", 0, 0, new java.awt.Font("Tahoma", 3, 11))); // NOI18N
 
         numComiditas.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1));
 
@@ -250,7 +250,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
 
         lblLongitudInicial.setText("Longitud inicial");
 
-        tabColoresElemetos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Colores de los elementos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+        tabColoresElemetos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Colores de los elementos", 0, 0, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
 
         pnlColorFondo.setBackground(java.awt.Color.gray);
         pnlColorFondo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,7 +263,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
         pnlColorFondo.setLayout(pnlColorFondoLayout);
         pnlColorFondoLayout.setHorizontalGroup(
             pnlColorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGap(0, 261, Short.MAX_VALUE)
         );
         pnlColorFondoLayout.setVerticalGroup(
             pnlColorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,11 +283,11 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
         pnlColorComiditas.setLayout(pnlColorComiditasLayout);
         pnlColorComiditasLayout.setHorizontalGroup(
             pnlColorComiditasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGap(0, 261, Short.MAX_VALUE)
         );
         pnlColorComiditasLayout.setVerticalGroup(
             pnlColorComiditasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 19, Short.MAX_VALUE)
+            .addGap(0, 41, Short.MAX_VALUE)
         );
 
         tabColoresElemetos.addTab("Comiditas", pnlColorComiditas);
@@ -295,7 +295,10 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
         chkSonidos.setSelected(true);
         chkSonidos.setText("Reproducir sonidos");
 
-        pnlDificultad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dificultad (ms entre pasos)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+        pnlDificultad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dificultad (ms entre pasos)", 0, 0, new java.awt.Font("Tahoma", 3, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+
+        numDificultad.setModel(new javax.swing.SpinnerNumberModel(100, 20, 1000, 1));
+        numDificultad.setEnabled(false);
 
         chkDificultad.add(rdbMuyFacil);
         rdbMuyFacil.setText("Muy fácil");
@@ -338,9 +341,6 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
             }
         });
 
-        numDificultad.setModel(new javax.swing.SpinnerNumberModel(100, 20, 1000, 1));
-        numDificultad.setEnabled(false);
-
         chkDificultad.add(rdbPersonalizado);
         rdbPersonalizado.setText("Personalizado");
         rdbPersonalizado.setToolTipText("");
@@ -360,18 +360,14 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                     .addComponent(numDificultad)
                     .addGroup(pnlDificultadLayout.createSequentialGroup()
                         .addGroup(pnlDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDificultadLayout.createSequentialGroup()
-                                .addComponent(rdbMuyFacil)
-                                .addGap(18, 18, 18)
-                                .addComponent(rdbDificil))
-                            .addGroup(pnlDificultadLayout.createSequentialGroup()
-                                .addComponent(rdbFacil)
-                                .addGap(38, 38, 38)
-                                .addComponent(rdbMuydificil))
-                            .addGroup(pnlDificultadLayout.createSequentialGroup()
-                                .addComponent(rdbMedio)
-                                .addGap(32, 32, 32)
-                                .addComponent(rdbPersonalizado)))
+                            .addComponent(rdbMuyFacil)
+                            .addComponent(rdbFacil)
+                            .addComponent(rdbMedio))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rdbPersonalizado)
+                            .addComponent(rdbMuydificil)
+                            .addComponent(rdbDificil))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -390,7 +386,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                 .addGroup(pnlDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdbMedio)
                     .addComponent(rdbPersonalizado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(numDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -411,10 +407,10 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                         .addGroup(pnlOpcionesJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(numComiditas)
                             .addComponent(numLongitudInicial)))
+                    .addComponent(pnlDificultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlOpcionesJuegoLayout.createSequentialGroup()
                         .addComponent(chkSonidos)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlDificultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlOpcionesJuegoLayout.setVerticalGroup(
@@ -429,11 +425,11 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                     .addComponent(numLongitudInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLongitudInicial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabColoresElemetos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabColoresElemetos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkSonidos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlDificultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -457,7 +453,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                             .addComponent(pnlOpcionesJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlOpcionesJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 127, Short.MAX_VALUE))))
+                        .addGap(0, 91, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,9 +465,9 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlDimensionesCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlOpcionesJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlOpcionesJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(pnlOpcionesJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(btnEmpezar)
                 .addContainerGap())
         );
@@ -512,15 +508,6 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(this, e.getMessage(), "Error al crear la partida.", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEmpezarActionPerformed
-
-    private void numJugadoresPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_numJugadoresPropertyChange
-        
-        if(tabColoresViboritas.getTabCount() == (int)numJugadores.getValue()) return;
-        int tabSelec = tabColoresViboritas.getSelectedIndex();
-        tabColoresViboritas.removeAll();
-        for(int c = 0; c < (int)numJugadores.getValue(); c++) tabColoresViboritas.addTab(String.valueOf(c + 1), pnlColorViboritas[c]);
-        tabColoresViboritas.setSelectedIndex(tabSelec < tabColoresViboritas.getTabCount() ? tabSelec : tabColoresViboritas.getTabCount() - 1);
-    }//GEN-LAST:event_numJugadoresPropertyChange
 
     private void pnlColorFondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlColorFondoMouseClicked
         
@@ -565,6 +552,14 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
         numDificultad.setEnabled(true);
     }//GEN-LAST:event_rdbPersonalizadoActionPerformed
 
+    private void numJugadoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_numJugadoresStateChanged
+        
+        if(tabColoresViboritas.getTabCount() == (int)numJugadores.getValue()) return;
+        int tabSelec = tabColoresViboritas.getSelectedIndex();
+        tabColoresViboritas.removeAll();
+        for(int c = 0; c < (int)numJugadores.getValue(); c++) tabColoresViboritas.addTab(String.valueOf(c + 1), pnlColorViboritas[c]);
+        tabColoresViboritas.setSelectedIndex(tabSelec < tabColoresViboritas.getTabCount() ? tabSelec : tabColoresViboritas.getTabCount() - 1);
+    }//GEN-LAST:event_numJugadoresStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmpezar;
