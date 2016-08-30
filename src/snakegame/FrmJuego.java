@@ -111,7 +111,7 @@ public class FrmJuego extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("JSnake v1.0");
         setResizable(false);
-        pack();
+        pnlNuevoJuego.aplicarTemaPorDefecto();
         centrarForm(this);
     }
     
@@ -197,20 +197,8 @@ public class FrmJuego extends JFrame {
      */
     public static void main(String[] ar) {
         
-        // Para el tema "look and feel"
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        
         // Crea y muestra el form
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new FrmJuego().setVisible(true);

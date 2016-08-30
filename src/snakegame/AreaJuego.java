@@ -125,7 +125,7 @@ public class AreaJuego extends JPanel implements KeyListener {
         this.reproducirSoniditos = reproducirSoniditos;
         this.colorComidita = new Color[2];
         this.colorComidita[0] = colorComidita;
-        this.colorComidita[1] = new Color(~colorComidita.getRGB());
+        this.colorComidita[1] = cambiarBrillo(colorComidita, colorContraste(colorComidita) == Color.WHITE ? 64 : -64);
         
         // Creación de la pila de coodenadas, el arreglo de direcciones, colores, configuraciones de teclas de las viboritas y banderas de ya perdió y direcciones actualizadas
         viboritas = new java.util.ArrayList<>();
@@ -213,7 +213,27 @@ public class AreaJuego extends JPanel implements KeyListener {
     public static Color colorContraste(Color color) {
         
         double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue()) / 1000;
-        return y >= 128 ? Color.black : Color.white;
+        return y >= 128 ? Color.BLACK : Color.WHITE;
+    }
+    
+    /**
+     * 
+     * Cambia el brillo de un color especificando su incremento o decremento que
+     * se aplicará a cada componente del color.
+     * @param color Color a alterar.
+     * @param incremento Incremento o decremento entre -255 y 255.
+     * @return El mismo color con un brillo distinto.
+     */
+    public static Color cambiarBrillo(Color color, int incremento) {
+        
+        int nuevoRojo = color.getRed() + incremento;
+        int nuevoVerde = color.getGreen() + incremento;
+        int nuevoAzul = color.getBlue() + incremento;
+        return new Color(
+            nuevoRojo < 0 ? 0 : nuevoRojo > 255 ? 255 : nuevoRojo,
+            nuevoVerde < 0 ? 0 : nuevoVerde > 255 ? 255 : nuevoVerde,
+            nuevoAzul < 0 ? 0 : nuevoAzul > 255 ? 255 : nuevoAzul
+        );
     }
     
     private void ajustarPanel() {
@@ -279,21 +299,23 @@ public class AreaJuego extends JPanel implements KeyListener {
      * Reproduce un sonido dado una sola vez.
      * @param sonidito Sonido a reproducir.
      */
-    public static synchronized void reproducirSonidito(final AudioInputStream sonidito) {
+    public static void reproducirSonidito(final AudioInputStream sonidito) {
+        synchronized(sonidito) {
         
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(sonidito);
-                    clip.start();
-                    sonidito.reset();
-                } catch (LineUnavailableException | IOException e) {
-                    System.err.println(e.getMessage());
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(sonidito);
+                        clip.start();
+                        sonidito.reset();
+                    } catch (LineUnavailableException | IOException e) {
+                        System.err.println(e.getMessage());
+                    }
                 }
-            }
-        }.start();
+            }.start();
+        }
     }
     
     /**

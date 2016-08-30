@@ -60,8 +60,8 @@
               <Component id="lblNota2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblControlesJugadores" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlControlesJugadores" min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="pnlControlesJugadores" pref="99" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPausa" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
                   <Component id="lblTerminarPartida" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTeclaTerminarPartida" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
