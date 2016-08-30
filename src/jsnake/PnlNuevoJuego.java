@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package snakegame;
+package jsnake;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -75,12 +75,12 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
      */
     public void aplicarTemaPorDefecto() {
         
-        String temaSeleccionar = UIManager.getCrossPlatformLookAndFeelClassName();
+        String temaSeleccionar = null;
         for(LookAndFeelInfo tema : UIManager.getInstalledLookAndFeels()) {
             cmbTema.addItem(tema.getName());
             if ("Metal".equals(tema.getName())) temaSeleccionar = tema.getName();
         }
-        cmbTema.setSelectedItem(temaSeleccionar);
+        if(temaSeleccionar != null) cmbTema.setSelectedItem(temaSeleccionar);
     }
 
     /**

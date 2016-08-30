@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package snakegame;
+package jsnake;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -183,8 +183,8 @@ public class AreaJuego extends JPanel implements KeyListener {
         
         try {
             
-            sonidoComidita = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/resources/bien.wav")));
-            sonidoPerder = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/resources/mal.wav")));
+            sonidoComidita = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/recursos/bien.wav")));
+            sonidoPerder = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/recursos/mal.wav")));
             sonidoComidita.mark(sonidoComidita.available());
             sonidoPerder.mark(sonidoPerder.available());
         }
