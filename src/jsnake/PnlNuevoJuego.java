@@ -60,12 +60,40 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
      * 
      * Cambia el color del panel que correspode al color de la viborita indicada.
      * @param viborita Índice de la viborita cuyo color correspondre al color del panel.
+     * @return Color seleccionado o null si cerró el cuadro de diálogo.
      */
-    public void cambiarColorViborita(int viborita) {
+    public Color cambiarColorViborita(int viborita) {
         
-        Color colorSeleccionado = JColorChooser.showDialog(this, "Elija un color para la viborita " + String.valueOf(viborita + 1), pnlColorViboritas[viborita].getBackground());
-        if(colorSeleccionado == null) return;
+        Color colorSeleccionado = JColorChooser.showDialog(juegoOrigen, "Elija un color para la viborita " + String.valueOf(viborita + 1), pnlColorViboritas[viborita].getBackground());
+        if(colorSeleccionado == null) return null;
         pnlColorViboritas[viborita].setBackground(colorSeleccionado);
+        return colorSeleccionado;
+    }
+    
+    /**
+     * 
+     * Cambia el color del panel que indicará el color de fondo de la partida.
+     * @return Color seleccionado o null si cerró el cuadro de diálogo.
+     */
+    public Color cambiarColorFondo() {
+        
+        Color colorSeleccionado = JColorChooser.showDialog(juegoOrigen, "Elija un color para el fondo del campo de juego.", pnlColorFondo.getBackground());
+        if(colorSeleccionado == null) return null;
+        pnlColorFondo.setBackground(colorSeleccionado);
+        return colorSeleccionado;
+    }
+    
+    /**
+     * 
+     * Cambia el color del panel que indicará el color principal de las comiditas de la partida.
+     * @return Color seleccionado o null si cerró el cuadro de diálogo.
+     */
+    public Color cambiarColorComiditas() {
+        
+        Color colorSeleccionado = JColorChooser.showDialog(juegoOrigen, "Elija un color para las comiditas.", pnlColorComiditas.getBackground());
+        if(colorSeleccionado == null) return null;
+        pnlColorComiditas.setBackground(colorSeleccionado);
+        return colorSeleccionado;
     }
     
     /**
@@ -546,17 +574,11 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEmpezarActionPerformed
 
     private void pnlColorFondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlColorFondoMouseClicked
-        
-        Color colorSeleccionado = JColorChooser.showDialog(this, "Elija un color para el fondo del campo de juego.", pnlColorFondo.getBackground());
-        if(colorSeleccionado == null) return;
-        pnlColorFondo.setBackground(colorSeleccionado);
+        cambiarColorFondo();
     }//GEN-LAST:event_pnlColorFondoMouseClicked
 
     private void pnlColorComiditasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlColorComiditasMouseClicked
-        
-        Color colorSeleccionado = JColorChooser.showDialog(this, "Elija un color para las comiditas.", pnlColorComiditas.getBackground());
-        if(colorSeleccionado == null) return;
-        pnlColorComiditas.setBackground(colorSeleccionado);
+        cambiarColorComiditas();
     }//GEN-LAST:event_pnlColorComiditasMouseClicked
 
     private void rdbMuyFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbMuyFacilActionPerformed
@@ -611,7 +633,7 @@ public class PnlNuevoJuego extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmpezar;
     private javax.swing.ButtonGroup chkDificultad;
-    private javax.swing.JCheckBox chkSonidos;
+    public javax.swing.JCheckBox chkSonidos;
     private javax.swing.JComboBox<String> cmbTema;
     private javax.swing.JLabel lblAltoCampo;
     private javax.swing.JLabel lblAltoCuadros;

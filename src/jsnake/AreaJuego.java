@@ -50,10 +50,10 @@ public class AreaJuego extends JPanel implements KeyListener {
     private final Dimension tamCuadros;
     private final Dimension tamCampo;
     public boolean reproducirSoniditos;
-    public Color colorFondo;
+    private Color colorFondo;
     private Color[] colorComidita;
     private boolean colorFotograma;
-    private java.util.Timer temporizador;
+    public java.util.Timer temporizador;
     private AudioInputStream sonidoComidita;
     private AudioInputStream sonidoPerder;
     private JLabel lblPausa;
@@ -144,6 +144,7 @@ public class AreaJuego extends JPanel implements KeyListener {
             puntos[c] = 0;
             juegoOrigen.puntuaciones[c].setText("Jugador " + String.valueOf(c + 1) + " - 0 comiditas");
             juegoOrigen.puntuaciones[c].setVisible(true);
+            juegoOrigen.mnuColorViboritas[c].setVisible(true);
             this.colores[c] = new Color[2];
             this.colores[c][0] = colores[c];
             this.colores[c][1] = colorContraste(colores[c]);
@@ -261,10 +262,50 @@ public class AreaJuego extends JPanel implements KeyListener {
             repetir = false;
             nuevoPunto = new Point(rnd.nextInt(tamCampo.width), rnd.nextInt(tamCampo.height));
             for(Point puntoComidita : posComiditas) if(nuevoPunto.equals(puntoComidita)) repetir = true;
-            for(java.util.Queue<Point> viborita : viboritas) for(Point puntoViborita : viborita) if(nuevoPunto.equals(puntoViborita)) repetir = true;
+            for(java.util.LinkedList<Point> viborita : viboritas) for(Point puntoViborita : viborita) if(nuevoPunto.equals(puntoViborita)) repetir = true;
             
         } while(repetir);
         posComiditas[comidita] = nuevoPunto;
+    }
+    
+    /**
+     * 
+     * Obtiene el color actual de las comiditas del campo de juego.
+     * @return Color principal de las comiditas.
+     */
+    public Color obtenerColorComiditas() {
+        return colorComidita[0];
+    }
+    
+    /**
+     * 
+     * Cambia el color actual de las comiditas del campo de juego.
+     * @param color Nuevo color principal de las comiditas.
+     */
+    public void ajustarColorComiditas(Color color) {
+        
+        colorComidita[0] = color;
+        colorComidita[1] = cambiarBrillo(color, colorContraste(color) == Color.WHITE ? 64 : -64);
+    }
+    
+    /**
+     * 
+     * Obtiene el color del fondo del campo de juego.
+     * @return Color del fondo del campo de juego.
+     */
+    public Color obtenerColorFondo() {
+        return colorFondo;
+    }
+    
+    /**
+     * 
+     * Cambia el color del fondo del campo de juego.
+     * @param color Nuevo color del campo de juego.
+     */
+    public void ajustarColorFondo(Color color) {
+        
+        colorFondo = color;
+        lblPausa.setForeground(colorContraste(color));
     }
     
     /**
@@ -273,7 +314,7 @@ public class AreaJuego extends JPanel implements KeyListener {
      * @param personaje Viborita a conocer color.
      * @return Color de la viborita indicada.
      */
-    public Color obtenerColor(int personaje) {
+    public Color obtenerColorViborita(int personaje) {
         
         if(personaje < 1 || personaje > viboritas.size())
             throw new IllegalArgumentException("El número de jugadores de este juego es de solo " + String.valueOf(viboritas.size()) + ".");
@@ -286,7 +327,7 @@ public class AreaJuego extends JPanel implements KeyListener {
      * @param personaje Viborita a ajustar color.
      * @param color Nuevo color de la viborita.
      */
-    public void ajustarColor(int personaje, Color color) {
+    public void ajustarColorViborita(int personaje, Color color) {
         
         if(personaje < 1 || personaje > viboritas.size())
             throw new IllegalArgumentException("El número de jugadores de este juego es de solo " + String.valueOf(viboritas.size()) + ".");
@@ -497,7 +538,7 @@ public class AreaJuego extends JPanel implements KeyListener {
         // Pausa o despausa el juego con la barra espaciadora
         if(teclaPulsada == KeyEvent.VK_SPACE) { juegoPausado = !juegoPausado; lblPausa.setVisible(juegoPausado); return; }
         // Termina el juego inmediatamente con la tecla escape
-        if(teclaPulsada == KeyEvent.VK_ESCAPE) { temporizador.cancel(); juegoOrigen.terminarJuego(); return; }
+        if(teclaPulsada == KeyEvent.VK_ESCAPE) { juegoOrigen.mnuNuevoJuego.doClick(); return; }
         if(juegoPausado) return;
         
         // Cambia la dirección de las viboritas a una direción válida

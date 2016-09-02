@@ -44,8 +44,15 @@ public class FrmJuego extends JFrame {
     // Controles
     private JMenuBar barraMenu;
     private JMenu mnuArchivo;
-    private JMenuItem mnuNuevoJuego;
+    public JMenuItem mnuNuevoJuego;
     private JMenuItem mnuSalir;
+    private JMenu mnuPartida;
+    private JMenu mnuColores;
+    private JMenuItem mnuColorFondo;
+    private JMenuItem mnuColorComiditas;
+    private JMenu mnuColoresViboritas;
+    public JMenuItem[] mnuColorViboritas;
+    private JCheckBoxMenuItem mnuSonidos;
     private JMenu mnuAyuda;
     private JMenuItem mnuControles;
     private JMenuItem mnuAcercaDe;
@@ -58,12 +65,21 @@ public class FrmJuego extends JFrame {
         mnuArchivo = new JMenu("Juego");
         mnuNuevoJuego = new JMenuItem("Nuevo juego");
         mnuSalir = new JMenuItem("Salir");
+        mnuNuevoJuego.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
         mnuNuevoJuego.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                terminarJuego();
+                if(JOptionPane.showConfirmDialog(
+                        rootPane,
+                        "¿Seguro que desea terminar la partida en curso?",
+                        "Terminar partida",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE
+                    ) == JOptionPane.OK_OPTION
+                ) terminarJuego();
             }
         });
+        mnuSalir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
         mnuSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,6 +88,56 @@ public class FrmJuego extends JFrame {
         });
         mnuArchivo.add(mnuNuevoJuego);
         mnuArchivo.add(mnuSalir);
+        
+        mnuPartida = new JMenu("Partida");
+        mnuColores = new JMenu("Colores del juego");
+        mnuColorFondo = new JMenuItem("Fondo");
+        mnuColorComiditas = new JMenuItem("Comiditas");
+        mnuColorFondo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color nuevoColor = pnlNuevoJuego.cambiarColorFondo();
+                if(nuevoColor != null) juegoActual.ajustarColorFondo(nuevoColor);
+            }
+        });
+        mnuColorComiditas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color nuevoColor = pnlNuevoJuego.cambiarColorFondo();
+                if(nuevoColor != null) juegoActual.ajustarColorComiditas(nuevoColor);
+            }
+        });
+        mnuColores.add(mnuColorFondo);
+        mnuColores.add(mnuColorComiditas);
+        mnuColoresViboritas = new JMenu("Colores de las viboritas");
+        mnuColorViboritas = new JMenuItem[4];
+        for(int c = 0; c < mnuColorViboritas.length; c++) {
+            
+            mnuColorViboritas[c] = new JMenuItem("Jugador " + String.valueOf(c + 1));
+            mnuColorViboritas[c].setName(String.valueOf(c + 1));
+            mnuColorViboritas[c].setVisible(false);
+            mnuColorViboritas[c].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int viborita = Integer.parseInt(((Component)e.getSource()).getName());
+                    Color nuevoColor = pnlNuevoJuego.cambiarColorViborita(viborita - 1);
+                    if(nuevoColor != null) juegoActual.ajustarColorViborita(viborita, nuevoColor);
+                }
+            });
+            mnuColoresViboritas.add(mnuColorViboritas[c]);
+        }
+        mnuSonidos = new JCheckBoxMenuItem("Sonidos");
+        mnuSonidos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
+        mnuSonidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                juegoActual.reproducirSoniditos = mnuSonidos.isSelected();
+                pnlNuevoJuego.chkSonidos.setSelected(mnuSonidos.isSelected());
+            }
+        });
+        mnuPartida.add(mnuColores);
+        mnuPartida.add(mnuColoresViboritas);
+        mnuPartida.add(mnuSonidos);
         
         mnuAyuda = new JMenu("Ayuda");
         mnuControles = new JMenuItem("Controles");
@@ -85,13 +151,21 @@ public class FrmJuego extends JFrame {
         mnuAcercaDe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarAcercaDe();
+                javax.swing.JOptionPane.showMessageDialog(
+                    rootPane,
+                    "JSnake v1.0\n"
+                    + "Juego tradicional del Snake personalizable.\n"
+                    + "Por SamuelCoral.",
+                    "Acerca de Juego del Snake",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+                );
             }
         });
         mnuAyuda.add(mnuControles);
         mnuAyuda.add(mnuAcercaDe);
         
         barraMenu.add(mnuArchivo);
+        barraMenu.add(mnuPartida);
         barraMenu.add(mnuAyuda);
         setJMenuBar(barraMenu);
         
@@ -101,6 +175,7 @@ public class FrmJuego extends JFrame {
         add(pnlNuevoJuego, BorderLayout.CENTER);
         add(pnlPuntuaciones, BorderLayout.EAST);
         mnuNuevoJuego.setVisible(false);
+        mnuPartida.setVisible(false);
         pnlPuntuaciones.setVisible(false);
         puntuaciones = new javax.swing.JLabel[] {
             pnlPuntuaciones.lblPuntuacion1, pnlPuntuaciones.lblPuntuacion2, pnlPuntuaciones.lblPuntuacion3, pnlPuntuaciones.lblPuntuacion4
@@ -132,17 +207,6 @@ public class FrmJuego extends JFrame {
         new FrmInfoControles(this).setVisible(true);
     }
     
-    private void mostrarAcercaDe() {
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "JSnake v1.0\n"
-            + "Juego tradicional del Snake personalizable.\n"
-            + "Por SamuelCoral.",
-            "Acerca de Juego del Snake",
-            javax.swing.JOptionPane.INFORMATION_MESSAGE
-        );
-    }
-    
     /**
      * 
      * Realiza las siguientes operaciones para empezar el juego:
@@ -160,6 +224,8 @@ public class FrmJuego extends JFrame {
         pnlNuevoJuego.setVisible(false);
         pnlPuntuaciones.setVisible(true);
         mnuNuevoJuego.setVisible(true);
+        mnuPartida.setVisible(true);
+        mnuSonidos.setSelected(pnlNuevoJuego.chkSonidos.isSelected());
         add(juegoActual, BorderLayout.WEST);
         pnlPuntuaciones.setPreferredSize(new Dimension(pnlPuntuaciones.getPreferredSize().width, juegoActual.getPreferredSize().height));
         pack();
@@ -180,10 +246,13 @@ public class FrmJuego extends JFrame {
      */
     public void terminarJuego() {
         
+        juegoActual.temporizador.cancel();
         for(JLabel puntuacion : puntuaciones) puntuacion.setVisible(false);
+        for(JMenuItem colores : mnuColorViboritas) colores.setVisible(false);
         pnlPuntuaciones.setVisible(false);
         pnlNuevoJuego.setVisible(true);
         mnuNuevoJuego.setVisible(false);
+        mnuPartida.setVisible(false);
         remove(juegoActual);
         juegoActual = null;
         pack();
