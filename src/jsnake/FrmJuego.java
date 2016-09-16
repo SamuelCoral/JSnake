@@ -44,14 +44,14 @@ public class FrmJuego extends JFrame {
     // Controles
     private JMenuBar barraMenu;
     private JMenu mnuArchivo;
-    public JMenuItem mnuNuevoJuego;
+    private JMenuItem mnuNuevoJuego;
     private JMenuItem mnuSalir;
     private JMenu mnuPartida;
     private JMenu mnuColores;
     private JMenuItem mnuColorFondo;
     private JMenuItem mnuColorComiditas;
     private JMenu mnuColoresViboritas;
-    public JMenuItem[] mnuColorViboritas;
+    private JMenuItem[] mnuColorViboritas;
     private JCheckBoxMenuItem mnuSonidos;
     private JMenu mnuAyuda;
     private JMenuItem mnuControles;
@@ -69,14 +69,7 @@ public class FrmJuego extends JFrame {
         mnuNuevoJuego.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(JOptionPane.showConfirmDialog(
-                        rootPane,
-                        "¿Seguro que desea terminar la partida en curso?",
-                        "Terminar partida",
-                        JOptionPane.OK_CANCEL_OPTION,
-                        JOptionPane.INFORMATION_MESSAGE
-                    ) == JOptionPane.OK_OPTION
-                ) terminarJuego();
+                terminarJuego(true);
             }
         });
         mnuSalir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
@@ -103,7 +96,7 @@ public class FrmJuego extends JFrame {
         mnuColorComiditas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Color nuevoColor = pnlNuevoJuego.cambiarColorFondo();
+                Color nuevoColor = pnlNuevoJuego.cambiarColorComiditas();
                 if(nuevoColor != null) juegoActual.ajustarColorComiditas(nuevoColor);
             }
         });
@@ -221,6 +214,9 @@ public class FrmJuego extends JFrame {
      */
     public void empezarJuego() {
         
+        for(int c = 0; c < juegoActual.numJugadores; c++) {
+            mnuColorViboritas[c].setVisible(true);
+        }
         pnlNuevoJuego.setVisible(false);
         pnlPuntuaciones.setVisible(true);
         mnuNuevoJuego.setVisible(true);
@@ -243,10 +239,20 @@ public class FrmJuego extends JFrame {
      * <li>Quita el panel del juego que acaba de terminar y lo destruye.</li>
      * <li>Redimensiona todo el formulario y lo centra en la pantalla.</li>
      * </ul>
+     * @param confirmacion Indica si se debe usar el cuadro de diálogo de confirmación antes de terminar el juego.
      */
-    public void terminarJuego() {
+    public void terminarJuego(boolean confirmacion) {
         
-        juegoActual.temporizador.cancel();
+        if(confirmacion) if(JOptionPane.showConfirmDialog(
+                rootPane,
+                "¿Seguro que desea terminar la partida en curso?",
+                "Terminar partida",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE
+            ) != JOptionPane.OK_OPTION
+        ) return;
+        
+        juegoActual.terminarJuego();
         for(JLabel puntuacion : puntuaciones) puntuacion.setVisible(false);
         for(JMenuItem colores : mnuColorViboritas) colores.setVisible(false);
         pnlPuntuaciones.setVisible(false);

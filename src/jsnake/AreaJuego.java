@@ -37,6 +37,7 @@ public class AreaJuego extends JPanel implements KeyListener {
     public static final int ARRIBA = 3;
     
     // Variables
+    public final int numJugadores;
     private final FrmJuego juegoOrigen;
     private final java.util.Random rnd;
     private byte[] direcciones;
@@ -53,7 +54,7 @@ public class AreaJuego extends JPanel implements KeyListener {
     private Color colorFondo;
     private Color[] colorComidita;
     private boolean colorFotograma;
-    public java.util.Timer temporizador;
+    private java.util.Timer temporizador;
     private AudioInputStream sonidoComidita;
     private AudioInputStream sonidoPerder;
     private JLabel lblPausa;
@@ -119,6 +120,7 @@ public class AreaJuego extends JPanel implements KeyListener {
             throw new IllegalArgumentException("La configuración de teclas número " + String.valueOf(c + 1) + " no especifica 4 teclas.");
         
         // Asignación de variables
+        this.numJugadores = numJugadores;
         this.tamCuadros = tamCuadros;
         this.tamCampo = tamCampo;
         this.colorFondo = colorFondo;
@@ -144,7 +146,6 @@ public class AreaJuego extends JPanel implements KeyListener {
             puntos[c] = 0;
             juegoOrigen.puntuaciones[c].setText("Jugador " + String.valueOf(c + 1) + " - 0 comiditas");
             juegoOrigen.puntuaciones[c].setVisible(true);
-            juegoOrigen.mnuColorViboritas[c].setVisible(true);
             this.colores[c] = new Color[2];
             this.colores[c][0] = colores[c];
             this.colores[c][1] = colorContraste(colores[c]);
@@ -464,11 +465,16 @@ public class AreaJuego extends JPanel implements KeyListener {
                 + "con una puntuación de " + String.valueOf(puntos[ganador]) + (puntos[ganador] == 1 ? " comidita." : " comiditas."),
                 "Juego terminado.", javax.swing.JOptionPane.INFORMATION_MESSAGE
             );
-            juegoOrigen.terminarJuego();
+            juegoOrigen.terminarJuego(false);
             return;
         }
         
         repaint();
+    }
+    
+    public void terminarJuego() {
+        
+        temporizador.cancel();
     }
     
     /**
@@ -538,7 +544,7 @@ public class AreaJuego extends JPanel implements KeyListener {
         // Pausa o despausa el juego con la barra espaciadora
         if(teclaPulsada == KeyEvent.VK_SPACE) { juegoPausado = !juegoPausado; lblPausa.setVisible(juegoPausado); return; }
         // Termina el juego inmediatamente con la tecla escape
-        if(teclaPulsada == KeyEvent.VK_ESCAPE) { juegoOrigen.mnuNuevoJuego.doClick(); return; }
+        if(teclaPulsada == KeyEvent.VK_ESCAPE) { juegoOrigen.terminarJuego(true); return; }
         if(juegoPausado) return;
         
         // Cambia la dirección de las viboritas a una direción válida
